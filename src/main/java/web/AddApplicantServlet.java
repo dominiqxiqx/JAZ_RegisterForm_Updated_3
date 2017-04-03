@@ -18,14 +18,9 @@ public class AddApplicantServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession();
-		if(session.getAttribute("conf") != null) {
-			response.getWriter()
-			.println("Powtórne wypełnienie formularza zostało zablokowane");
-			return;
-		}
-		
+				
 		ConferenceApplication application = retrieveApplicationFromRequest(request);
 		ConferenceApplicationRepository repository = new DummyConferenceApplicationRepository();
 		
